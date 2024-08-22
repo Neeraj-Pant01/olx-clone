@@ -5,6 +5,10 @@ const productSchema = new mongoose.Schema({
         type:String,
         required:true
     },
+    brand:{
+        type:String,
+        required:true
+    },
     productName:{
         type:String,
         required:true
@@ -18,7 +22,7 @@ const productSchema = new mongoose.Schema({
         required:true
     },
     images:{
-        type:[String],
+        type:Array,
         required:false
     },
     state:{
@@ -32,6 +36,10 @@ const productSchema = new mongoose.Schema({
     neighbourhood:{
         type:String,
         required:true
+    },
+    sold:{
+        type:Boolean,
+        default:false
     }
 },{
     timestamps:true
