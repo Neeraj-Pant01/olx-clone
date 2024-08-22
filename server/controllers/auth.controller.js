@@ -22,7 +22,7 @@ exports.register = async (req, res, next) => {
 
 exports.login = async (req, res, next) => {
     try {
-        const user = await userModel.findOne({ email: req.body.email })
+        const user = req.body.email ? await userModel.findOne({ email: req.body.email }) : await userModel.findOne({ mobile: req.body.mobile })
 
         if (!user) return res.status(400).json({message:"user not exist"})
 

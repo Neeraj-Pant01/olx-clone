@@ -1,7 +1,7 @@
 const productModel = require("../models/product.model")
 
 exports.addProduct = async (req,res,next) =>{
-    const newProduct = new productModel({...req.body,userId:req.user.id})
+    const newProduct = new productModel(req.body)
     try{
         const product = await newProduct.save();
         res.status(200).json(product)
@@ -27,6 +27,15 @@ exports.getAllProducts = async (req,res,next) =>{
             try{
                 const products = q.latest ? await productModel.find().limit(9).sort({createdAt : -1}) : await productModel.find(filters).sort({[q.sort]: -1})
                 res.status(200).json(products)
+    }catch(err){
+        res.status(400).json({message:err.message})
+    }
+}
+
+exports.getSellerProducts = async (req,res,next) =>{
+    try{
+        const products = await productModel.find({userId:req.params.userId})
+        res.status(200).json(products)
     }catch(err){
         res.status(400).json({message:err.message})
     }
