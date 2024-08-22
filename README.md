@@ -1,7 +1,7 @@
 # Frontend Setup
 
 1. **Navigate to the frontend directory:**
-cd ../frontend
+cd ../client
 
 Install the frontend dependencies:
 npm install
@@ -14,7 +14,7 @@ The frontend will run on http://localhost:5173
 
 # Backend Setup
 1. **Navigate to the frontend directory:**
-cd ../frontend
+cd ../server
 
 Install the Backend dependencies:
 npm install
